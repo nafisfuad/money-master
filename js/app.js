@@ -1,3 +1,4 @@
+// income
 function getIncome() {
     const income = parseFloat(document.getElementById('income').value);
 
@@ -7,6 +8,7 @@ function getIncome() {
     return income;
 }
 
+// total expense
 function getTotalExpenses() {
     const food = parseFloat(document.getElementById('food').value);
     const rent = parseFloat(document.getElementById('rent').value);
@@ -20,6 +22,7 @@ function getTotalExpenses() {
     return totalExpenses;
 }
 
+// balance
 function getBalance() {
     const income = getIncome();
     const totalExpenses = getTotalExpenses();
@@ -32,11 +35,13 @@ function getBalance() {
 
 }
 
+// error handling
 function errorMessage(message) {
     document.getElementById('error-message').innerText = message;
 }
 
 
+// calculate button
 document.getElementById('calculate').addEventListener('click', function () {
     const income = getIncome();
     const totalExpenses = getTotalExpenses();
@@ -58,6 +63,7 @@ document.getElementById('calculate').addEventListener('click', function () {
 
 });
 
+// save button
 document.getElementById('calculate-save').addEventListener('click', function () {
     const income = getIncome();
     const balance = getBalance();
