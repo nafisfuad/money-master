@@ -35,7 +35,14 @@ function getBalance() {
 
 }
 
-function clearSavingAndRemaining() {
+// reset total expenses and balance
+function resetTotalExpensesAndBalance() {
+    document.getElementById('total-expenses').innerText = '';
+    document.getElementById('balance').innerText = '';
+}
+
+// reset saving and remaining
+function resetSavingAndRemaining() {
     document.getElementById('saving-amount').innerText = '';
     document.getElementById('remaining-balance').innerText = '';
 }
@@ -54,15 +61,17 @@ document.getElementById('calculate').addEventListener('click', function () {
 
     if (!isNaN(totalExpenses) && !isNaN(balance)) {
         if (totalExpenses > income) {
-            errorMessage('Insufficient amount.')
+            errorMessage('Insufficient amount.');
+            resetTotalExpensesAndBalance();
         } else {
-            document.getElementById('total-expense').innerText = totalExpenses;
+            document.getElementById('total-expenses').innerText = totalExpenses;
             document.getElementById('balance').innerText = balance;
             errorMessage('');
         }
 
     } else {
         errorMessage('Non-negative NUMBERS only!');
+        resetTotalExpensesAndBalance();
     }
 
 
@@ -78,7 +87,7 @@ document.getElementById('calculate-save').addEventListener('click', function () 
         const remainingBalance = balance - savingAmount;
         if (savingAmount > balance) {
             errorMessage('Not enough balance!');
-            clearSavingAndRemaining();
+            resetSavingAndRemaining();
         }
         else {
             document.getElementById('saving-amount').innerText = savingAmount;
@@ -87,7 +96,7 @@ document.getElementById('calculate-save').addEventListener('click', function () 
         }
     } else {
         errorMessage('Non-negative NUMBERS only!');
-        clearSavingAndRemaining();
+        resetSavingAndRemaining();
     }
 });
 
