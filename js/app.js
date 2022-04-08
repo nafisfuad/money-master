@@ -35,6 +35,11 @@ function getBalance() {
 
 }
 
+function clearSavingAndRemaining() {
+    document.getElementById('saving-amount').innerText = '';
+    document.getElementById('remaining-balance').innerText = '';
+}
+
 // error handling
 function errorMessage(message) {
     document.getElementById('error-message').innerText = message;
@@ -73,6 +78,7 @@ document.getElementById('calculate-save').addEventListener('click', function () 
         const remainingBalance = balance - savingAmount;
         if (savingAmount > balance) {
             errorMessage('Not enough balance!');
+            clearSavingAndRemaining();
         }
         else {
             document.getElementById('saving-amount').innerText = savingAmount;
@@ -81,6 +87,7 @@ document.getElementById('calculate-save').addEventListener('click', function () 
         }
     } else {
         errorMessage('Non-negative NUMBERS only!');
+        clearSavingAndRemaining();
     }
 });
 
